@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"net/http"
+	"ride-sharing/shared/contracts"
 )
 
 func handleTripPreview(w http.ResponseWriter, r *http.Request) {
@@ -19,5 +20,7 @@ func handleTripPreview(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	writeJSON(w, http.StatusCreated, "created")
+	response := contracts.APIResponse{Data: "created"}
+
+	writeJSON(w, http.StatusCreated, response)
 }
